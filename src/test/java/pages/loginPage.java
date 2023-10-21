@@ -39,6 +39,9 @@ public class loginPage {
     @FindBy(id = "com.booking:id/identity_landing_social_button_text")
     public WebElement signInButton;
 
+    @FindBy(id = "com.booking:id/bui_empty_state_primary_action")
+    public WebElement startSearchingModal;
+
     @FindBy(id = "com.booking:id/facet_index_section_search_header")
     public WebElement landingPageHeader;
 
@@ -66,5 +69,8 @@ public class loginPage {
     public void clickSignInButton() throws InterruptedException {
         signInButton.click();
         Thread.sleep(8000);
+        if (startSearchingModal.isDisplayed()){
+            startSearchingModal.click();
+        }
     }
 }

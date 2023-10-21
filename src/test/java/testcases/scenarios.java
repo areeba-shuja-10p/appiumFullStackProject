@@ -6,21 +6,24 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.loginPage;
+import pages.searchPage;
 
 import java.net.MalformedURLException;
 
-public class loginTest {
+public class scenarios {
 
     private loginPage loginPage;
+    private searchPage searchPage;
 
     @BeforeTest
     public void setup() throws MalformedURLException {
         appFactory.initializer();
         loginPage = new loginPage();
+        searchPage = new searchPage();
     }
 
     @Test
-    public void verifyUserLogin() throws InterruptedException {
+    public void loginUser() throws InterruptedException {
         loginPage.clickSignInWithEmailButton();
         Assert.assertTrue(loginPage.pageHeader.isDisplayed());
         System.out.println("Email Address Page is displayed");
@@ -34,8 +37,20 @@ public class loginTest {
         System.out.println("User logged-in successfully");
     }
 
-    @AfterTest
-    public void tearDown() {
-        appFactory.quitDriver();
+    @Test
+    public void searchForStays() throws InterruptedException {
+        Thread.sleep(5000);
+        searchPage.selectDestination();
+        Thread.sleep(5000);
+//        searchPage.enterPassword();
+//        searchPage.clickSignInButton();
+//        Assert.assertTrue((searchPage.landingPageHeader.isDisplayed()));
+//        System.out.println("Stays searched successfully");
     }
+
+
+//    @AfterTest
+//    public void tearDown() {
+//        appFactory.quitDriver();
+//    }
 }

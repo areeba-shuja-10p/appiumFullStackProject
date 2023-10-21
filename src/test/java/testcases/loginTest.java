@@ -34,11 +34,6 @@ public class loginTest {
         System.out.println("User logged-in successfully");
     }
 
-//    @Test
-//    public void verifyValidLogin(){
-//        // Your Code here
-//    }
-
     @AfterTest
     public void tearDown() {
         appFactory.quitDriver();

@@ -65,6 +65,6 @@ public class loginPage {
 
     public void clickSignInButton() throws InterruptedException {
         signInButton.click();
-        Thread.sleep(5000);
+        Thread.sleep(8000);
     }
 }

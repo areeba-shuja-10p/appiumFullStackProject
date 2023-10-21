@@ -19,13 +19,20 @@ public class searchPage {
 
     By by_destination = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]");
 
+    By by_selectDatesButton = By.id("com.booking:id/facet_date_picker_confirm");
+
+    By by_applyButton = By.id("com.booking:id/group_config_apply_button");
+
     @FindBy(id = "com.booking:id/facet_search_box_accommodation_destination")
     public WebElement destinationField;
+
+    @FindBy(id = "com.booking:id/facet_with_bui_free_search_booking_header_toolbar_content")
+    public WebElement typeDestination;
 
     @FindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]")
     public WebElement selectDestination;
 
-    @FindBy(xpath = "com.booking:id/facet_date_picker_confirm")
+    @FindBy(id = "com.booking:id/facet_date_picker_confirm")
     public WebElement selectDatesButton;
 
     @FindBy(id = "com.booking:id/facet_search_box_accommodation_occupancy")
@@ -34,30 +41,28 @@ public class searchPage {
     @FindBy(id = "com.booking:id/group_config_apply_button")
     public WebElement applyButton;
 
-    @FindBy(id = "com.booking:id/identity_header_title")
-    public WebElement pageHeader;
+    @FindBy(id = "com.booking:id/facet_search_box_cta")
+    public WebElement searchButton;
 
-    @FindBy(id = "com.booking:id/facet_index_section_search_header")
-    public WebElement landingPageHeader;
-
-    public void selectDestination() {
+    public void selectDestination() throws InterruptedException {
         destinationField.click();
-        destinationField.sendKeys("los angeles");
+        typeDestination.sendKeys("los angeles");
         new WebDriverWait(appDriver.getDriver(), 20).until(ExpectedConditions.presenceOfElementLocated(by_destination));
         selectDestination.click();
     }
 
-    public void selectDate() {
+    public void selectDate() throws InterruptedException {
+        Thread.sleep(5000);
         selectDatesButton.click();
     }
 
-    public void selectRoomsAndGuests() {
+    public void selectRoomsAndGuests() throws InterruptedException {
+        Thread.sleep(5000);
         roomsAndGuestsField.click();
         applyButton.click();
     }
 
-//    public void clickContinueButton() throws InterruptedException {
-//        continueButton.click();
-//        Thread.sleep(5000);
-//    }
+    public void clickSearchButton() throws InterruptedException {
+        searchButton.click();
+    }
 }

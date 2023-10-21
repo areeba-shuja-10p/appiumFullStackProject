@@ -41,9 +41,9 @@ public class scenarios {
     public void searchForStays() throws InterruptedException {
         Thread.sleep(5000);
         searchPage.selectDestination();
-        Thread.sleep(5000);
-//        searchPage.enterPassword();
-//        searchPage.clickSignInButton();
+        searchPage.selectDate();
+        searchPage.selectRoomsAndGuests();
+        searchPage.clickSearchButton();
 //        Assert.assertTrue((searchPage.landingPageHeader.isDisplayed()));
 //        System.out.println("Stays searched successfully");
     }

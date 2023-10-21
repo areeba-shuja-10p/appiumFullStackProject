@@ -48,7 +48,7 @@ public class loginPage {
     public void clickSignInWithEmailButton() throws InterruptedException {
         new WebDriverWait(appDriver.getDriver(), 30).until(ExpectedConditions.presenceOfElementLocated(by_createAccountButton));
         signInWithEmailButton.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
     }
 
     public void enterValidEmailAddress() {
@@ -58,7 +58,7 @@ public class loginPage {
 
     public void clickContinueButton() throws InterruptedException {
         continueButton.click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
     }
 
     public void enterPassword() throws InterruptedException {
@@ -68,7 +68,7 @@ public class loginPage {
 
     public void clickSignInButton() throws InterruptedException {
         signInButton.click();
-        Thread.sleep(8000);
+        Thread.sleep(5000);
         if (startSearchingModal.isDisplayed()){
             startSearchingModal.click();
         }

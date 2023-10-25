@@ -40,12 +40,13 @@ public class loginPage {
     public WebElement signInButton;
 
     @FindBy(id = "com.booking:id/bui_empty_state_primary_action")
-    public WebElement startSearchingModal;
+    public WebElement startSearchingButton;
 
     @FindBy(id = "com.booking:id/facet_index_section_search_header")
     public WebElement landingPageHeader;
 
     public void clickSignInWithEmailButton() throws InterruptedException {
+        Thread.sleep(3000);
         new WebDriverWait(appDriver.getDriver(), 30).until(ExpectedConditions.presenceOfElementLocated(by_createAccountButton));
         signInWithEmailButton.click();
         Thread.sleep(2000);
@@ -58,7 +59,7 @@ public class loginPage {
 
     public void clickContinueButton() throws InterruptedException {
         continueButton.click();
-        Thread.sleep(3000);
+        Thread.sleep(4000);
     }
 
     public void enterPassword() throws InterruptedException {
@@ -68,9 +69,7 @@ public class loginPage {
 
     public void clickSignInButton() throws InterruptedException {
         signInButton.click();
-        Thread.sleep(5000);
-        if (startSearchingModal.isDisplayed()){
-            startSearchingModal.click();
-        }
+        Thread.sleep(10000);
+        startSearchingButton.click();
     }
 }

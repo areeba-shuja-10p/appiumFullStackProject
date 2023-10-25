@@ -39,18 +39,17 @@ public class scenarios {
 
     @Test
     public void searchForStays() throws InterruptedException {
-        Thread.sleep(5000);
         searchPage.selectDestination();
         searchPage.selectDate();
         searchPage.selectRoomsAndGuests();
         searchPage.clickSearchButton();
-//        Assert.assertTrue((searchPage.landingPageHeader.isDisplayed()));
-//        System.out.println("Stays searched successfully");
+        Assert.assertTrue((searchPage.verifyFilter.isDisplayed()));
+        searchPage.checkResults();
+        System.out.println("Stays searched successfully");
     }
 
-
-//    @AfterTest
-//    public void tearDown() {
-//        appFactory.quitDriver();
-//    }
+    @AfterTest
+    public void tearDown() {
+        appFactory.quitDriver();
+    }
 }

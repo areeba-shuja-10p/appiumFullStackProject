@@ -15,13 +15,7 @@ public class searchPage {
         PageFactory.initElements(new AppiumFieldDecorator(appDriver.getDriver()), this);
     }
 
-//    By by_pageHeader = By.id("com.booking:id/identity_header_title");
-
     By by_destination = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.TextView[1]");
-
-    By by_selectDatesButton = By.id("com.booking:id/facet_date_picker_confirm");
-
-    By by_applyButton = By.id("com.booking:id/group_config_apply_button");
 
     @FindBy(id = "com.booking:id/facet_search_box_accommodation_destination")
     public WebElement destinationField;
@@ -44,7 +38,20 @@ public class searchPage {
     @FindBy(id = "com.booking:id/facet_search_box_cta")
     public WebElement searchButton;
 
+    @FindBy(id = "com.booking:id/genius_onbaording_bottomsheet_cta")
+    public WebElement startSearchingButton;
+
+    @FindBy(id = "com.booking:id/searchbox_destination")
+    public WebElement verifyFilter;
+
+    @FindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup")
+    public WebElement openResults;
+
+    @FindBy(id = "com.booking:id/property_name")
+    public WebElement checkPropertyName;
+
     public void selectDestination() throws InterruptedException {
+        Thread.sleep(5000);
         destinationField.click();
         typeDestination.sendKeys("los angeles");
         new WebDriverWait(appDriver.getDriver(), 20).until(ExpectedConditions.presenceOfElementLocated(by_destination));
@@ -52,17 +59,25 @@ public class searchPage {
     }
 
     public void selectDate() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         selectDatesButton.click();
     }
 
     public void selectRoomsAndGuests() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         roomsAndGuestsField.click();
         applyButton.click();
     }
 
     public void clickSearchButton() throws InterruptedException {
         searchButton.click();
+        Thread.sleep(3000);
+        startSearchingButton.click();
+    }
+
+    public void checkResults() throws InterruptedException {
+        openResults.click();
+        Thread.sleep(3000);
+        checkPropertyName.isDisplayed();
     }
 }
